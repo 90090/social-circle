@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { FaLinkedin,FaFacebook } from 'react-icons/fa';
 import Reviews from "./Reviews";
 import Navbar from "./Navbar";
-import Clients from "./clients";
+import Clients from "./Clients";
 import Services from "./Services";
 
 
