@@ -1,37 +1,36 @@
-import { motion,useInView } from "framer-motion";
-import { useEffect, useState,useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 import PropTypes from 'prop-types';
+import { useClientsData } from "./hooks/useClientsData";
 
 function Clients() {
+    const { logos, metrics, loading, error } = useClientsData();
 
-    const logos = [
+    // Fallback data (will be used until Sanity data is loaded)
+    const fallbackLogos = [
       { src: "./logos/Arc.png" },
       { src: "./logos/Big-Dipper.png" },
       { src: "./logos/chamber.png" },
       { src: "./logos/dependable.png" },
-      { src: "./logos/FarmonWheels.png" },
+      { src: "./logos/1.png" },
       { src: "./logos/IMTI.png" },
       { src: "./logos/logo512.png" },
       { src: "./logos/UnitedWayNaugatuck.png" },
-      // { src: "logo9.png" },
-      // { src: "logo10.png" },
-      // { src: "logo11.png" },
-      // { src: "logo12.png" }
     ];
-  
-    const metrics = [
+    
+    const fallbackMetrics = [
       { label: "Website Views", value: 150 },
       { label: "Content Interactions", value: 200 },
       { label: "Content Watch Time", value: 180 },
       { label: "Reach", value: 220 },
       { label: "Conversions", value: 130 },
     ];
-  
+
     function AnimatedNumber({ target }) {
       const [count, setCount] = useState(0);
       const ref = useRef(null);
       const isInView = useInView(ref, { once: true });
-  
+    
       useEffect(() => {
         if (!isInView) return;
         
@@ -39,7 +38,7 @@ function Clients() {
         const duration = 1000;
         const interval = 10;
         const step = target / (duration / interval);
-  
+    
         const timer = setInterval(() => {
           start += step;
           if (start >= target) {
@@ -48,16 +47,24 @@ function Clients() {
           }
           setCount(Math.round(start));
         }, interval);
-  
+    
         return () => clearInterval(timer);
       }, [isInView, target]);
-  
+    
       return <span ref={ref}>{count}%</span>;
     }
-  
+    
     AnimatedNumber.propTypes = {
       target: PropTypes.number.isRequired,
     };
+
+    // Determine which data to display
+    const displayLogos = loading ? fallbackLogos : logos;
+    const displayMetrics = loading ? fallbackMetrics : metrics;
+
+    if (error) {
+      console.error("Error loading clients data:", error);
+    }
   
     return (
     <section id="clients" className="py-20 bg-gray-100 text-black text-center">
@@ -77,7 +84,7 @@ function Clients() {
 
       {/* Animated Metrics */}
       <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-6 pr-5 pl-5">
-        {metrics.map((metric, index) => (
+        {displayMetrics.map((metric, index) => (
           <motion.div
             key={index}
             className="p-6 bg-white shadow-lg rounded-lg text-center hover:shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden group"
@@ -98,13 +105,13 @@ function Clients() {
       {/* Logos Grid */}
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
-          {logos.map((logo, i) => (
+          {displayLogos.map((logo, i) => (
             <img
               key={i}
-              src={logo.src}
-              alt={`Company ${i + 1}`}
-              className={`mx-auto  hover:scale-105 transition duration-300 ${
-                i === 2 || i === 3 ? 'h-40' : 'h-23'
+              src={logo.logoUrl || logo.src} // Use logoUrl from Sanity, fallback to local images
+              alt={logo.name || `Company ${i + 1}`}
+              className={`mx-auto hover:scale-105 transition duration-300 ${
+                logo.height || (i === 2 || i === 3 ? 'h-40' : 'h-23')
               }`}
             />
           ))}

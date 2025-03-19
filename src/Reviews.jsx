@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useReviewsData } from "./hooks/useReviews";
 
 function Reviews() {
+  const { reviews} = useReviewsData();
   const [currentReview, setCurrentReview] = useState(0);
-  const reviews = [
+  
+  const fallbackReviews = [
     {
       text: "The best decision I ever made for my business was reaching out to Courtney.  I told her I had made the business decision to commit to 6 months. 18 months later? I  am customer for life!",
       name: "Tamath Rossi",
@@ -24,21 +27,19 @@ function Reviews() {
     }
   ];
 
+  const displayReviews = reviews.length > 0 ? reviews : fallbackReviews;
+
   const handleNext = () => {
-    if (currentReview < reviews.length - 1) {
-      setCurrentReview(currentReview + 1);
-    } else {
-      setCurrentReview(0); // Loop back to first review
-    }
+    setCurrentReview((prev) => (prev + 1) % displayReviews.length);
   };
 
   const handlePrev = () => {
-    if (currentReview > 0) {
-      setCurrentReview(currentReview - 1);
-    } else {
-      setCurrentReview(reviews.length - 1); // Loop back to last review
-    }
+    setCurrentReview((prev) => (prev - 1 + displayReviews.length) % displayReviews.length);
   };
+
+  if (displayReviews.length === 0) {
+    return <p className="text-center text-gray-500">No reviews available.</p>;
+  }
 
   return (
     <section id="reviews" className="py-20 bg-purple-100 text-black text-center">
@@ -65,10 +66,10 @@ function Reviews() {
           transition={{ type: 'spring', stiffness: 100, damping: 40, duration: 1 }} // Slower and smoother spring motion
         >
           <div className="bg-white p-6 shadow-lg rounded-lg w-auto max-w-xl text-center flex flex-col items-center">
-            <div className="text-purple-400 mb-2">{reviews[currentReview].stars}</div>
-            <p className="mb-4">{reviews[currentReview].text}</p>
-            <span className="font-bold">{reviews[currentReview].name}</span>
-            <div className="text-sm text-gray-500 mt-2">{reviews[currentReview].date}</div>
+            <div className="text-purple-400 mb-2">{displayReviews[currentReview].stars}</div>
+            <p className="mb-4">{displayReviews[currentReview].text}</p>
+            <span className="font-bold">{displayReviews[currentReview].name}</span>
+            <div className="text-sm text-gray-500 mt-2">{displayReviews[currentReview].date}</div>
           </div>
         </motion.div>
         
