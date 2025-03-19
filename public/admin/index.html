@@ -5,18 +5,9 @@
     <title>Content Manager</title>
   </head>
   <body>
-    <script src="https://unpkg.com/netlify-cms@latest/dist/netlify-cms.js"></script>
+    <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
     <script>
-      CMS.init({
-        config: {
-          backend: {
-            name: "github",
-            repo: "90090/social-circle", // Change this
-            branch: "main", // Change to "master" if needed
-            auth_endpoint: "https://social-circlellc.netlify.app/admin/oauth/authorize",
-          }
-        }
-      });
+      CMS.init();
     </script>
   </body>
 </html>
