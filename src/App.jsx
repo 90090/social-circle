@@ -22,7 +22,6 @@ export default function App() {
 
       <Clients/>
 
-
       {/* Video Highlights */}
       <section id="videos" className="py-20 bg-white text-black text-center">
         <h2 className="text-4xl font-bold mb-6">Featured Work</h2>
