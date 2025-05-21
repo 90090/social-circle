@@ -12,7 +12,7 @@ export default {
     {
       name: 'value',
       title: 'Metric Value',
-      type: 'number',
+      type: 'string',
       description: 'The percentage value for this metric',
       validation: Rule => Rule.required()
     },

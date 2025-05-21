@@ -31,32 +31,42 @@ function Clients() {
       const ref = useRef(null);
       const isInView = useInView(ref, { once: true });
     
+      // Clean and convert the string to a number
+      const numericTarget = typeof target === "string"
+        ? Number(target.replace(/,/g, "")) // Remove commas
+        : target;
+    
       useEffect(() => {
-        if (!isInView) return;
-        
+        if (!isInView || isNaN(numericTarget)) return;
+    
         let start = 0;
         const duration = 1000;
         const interval = 10;
-        const step = target / (duration / interval);
+        const step = numericTarget / (duration / interval);
     
         const timer = setInterval(() => {
           start += step;
-          if (start >= target) {
-            start = target;
+          if (start >= numericTarget) {
+            start = numericTarget;
             clearInterval(timer);
           }
           setCount(Math.round(start));
         }, interval);
     
         return () => clearInterval(timer);
-      }, [isInView, target]);
+      }, [isInView, numericTarget]);
     
-      return <span ref={ref}>{count}%</span>;
+      return (
+        <span ref={ref}>
+          {isNaN(numericTarget) ? "?" : `+${count.toLocaleString()}`}
+        </span>
+      );
     }
     
     AnimatedNumber.propTypes = {
-      target: PropTypes.number.isRequired,
+      target: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     };
+    
 
     // Determine which data to display
     const displayLogos = loading ? fallbackLogos : logos;
@@ -70,20 +80,8 @@ function Clients() {
     <section id="clients" className="py-20 bg-gray-100 text-black text-center">
       <h2 className="text-4xl font-bold mb-4">Our Clients Experience...</h2>
 
-      <p className="text-gray-600 text-sm mb-6">
-        Featured in{" "}
-        <a
-          href="https://example-news.com/article"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline text-purple-700 hover:text-purple-900"
-        >
-          Republican American
-        </a>
-      </p>
-
       {/* Animated Metrics */}
-      <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-6 pr-5 pl-5">
+      <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 pr-5 pl-5">
         {displayMetrics.map((metric, index) => (
           <motion.div
             key={index}
@@ -93,8 +91,8 @@ function Clients() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
-            <p className="text-3xl font-bold text-purple-700">
-              <AnimatedNumber target={metric.value} />
+            <p className="text-2xl md:text-3xl font-bold text-purple-700">
+            <AnimatedNumber target={metric.value} />
             </p>
             <p className="text-gray-600">{metric.label}</p>
             <div className="absolute bottom-0 left-1/2 w-0 h-1 bg-purple-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
@@ -103,33 +101,40 @@ function Clients() {
       </div>
 
       {/* Logos Grid */}
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
-          {displayLogos.map((logo, i) => (
-            <img
-              key={i}
-              src={logo.logoUrl || logo.src} // Use logoUrl from Sanity, fallback to local images
-              alt={logo.name || `Company ${i + 1}`}
-              className={`mx-auto hover:scale-105 transition duration-300 ${
-                logo.height || (i === 2 || i === 3 ? 'h-40' : 'h-23')
-              }`}
-            />
-          ))}
+      <div className="overflow-hidden py-6 group mt-12">
+  <div className="flex animate-scroll whitespace-nowrap group-hover:[animation-play-state:paused] gap-12 px-4">
+    {[...Array(3)].flatMap(() => displayLogos).map((logo, i) => {
+      const imgSrc = logo.logoUrl || logo.src;
+      const imgAlt = logo.name || `Company ${i + 1}`;
 
-          {/* Newspaper Feature */}
-          {/* <a
-            href="https://example-news.com/article"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/logos/newspaper.png"
-              alt="Newspaper Feature"
-              className="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300 hover:scale-105"
-            />
-          </a> */}
+      const imgElement = (
+        <img
+          src={imgSrc}
+          alt={imgAlt}
+          className="h-16 w-auto max-w-none custom-grayscale transition-all duration-300 hover:scale-105 object-contain"
+        />
+      );
+
+      return logo.facebookUrl ? (
+        <a
+          key={`${i}-${imgAlt}`}
+          href={logo.facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block"
+        >
+          {imgElement}
+        </a>
+      ) : (
+        <div key={`${i}-${imgAlt}`} className="inline-block">
+          {imgElement}
         </div>
-      </div>
+      );
+    })}
+  </div>
+</div>
+
+
 
       
     </section>

@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+@keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }  
+  
+  .animate-scroll {
+    animation: scroll 60s linear infinite;
+  }
+
+  @media (max-width: 768px) {
+    .animate-scroll {
+        animation: scroll 30s linear infinite;
+    }
+  }
+
+  .custom-grayscale {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  
+  .custom-grayscale:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+  
+  @media (hover: none) {
+    .custom-grayscale {
+      filter: none !important;
+      transform: none !important;
+    }
+  }
+  
+  
+  
+  

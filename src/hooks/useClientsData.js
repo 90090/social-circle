@@ -16,7 +16,8 @@ export function useClientsData() {
             _id,
             name,
             "logoUrl": logo.asset->url,
-            height
+            height,
+            facebookUrl
           }
         `);
         

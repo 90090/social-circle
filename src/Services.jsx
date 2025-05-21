@@ -53,7 +53,7 @@ function Services() {
                 <h3 className="text-2xl font-semibold text-gray-800 mb-4">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
                 <div className="absolute bottom-0 left-1/2 w-0 h-1 bg-purple-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
-                </motion.div>
+            </motion.div>
             ))}
         </div>
         </div>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaLinkedin,FaFacebook } from 'react-icons/fa';
+import { useWhatWeDo } from './hooks/useWhatWeDo';
 import Reviews from "./Reviews";
 import Navbar from "./Navbar";
 import Clients from "./Clients";
@@ -9,7 +10,7 @@ import Mystory from "./Mystory";
 
 export default function App() {
 
-
+  const { statement } = useWhatWeDo();
   return (
     <div className="text-white bg-black">
       <Navbar/>
@@ -20,6 +21,17 @@ export default function App() {
           Elevating your Business Through Digital Marketing
         </motion.h1>
       </section>
+
+      <section id="what-we-do" className="py-20 bg-white text-black text-center px-6">
+      <h2 className="text-4xl font-bold mb-6">
+        Transforming Clicks Into Connections - And Connections Into Clients
+      </h2>
+      {statement && (
+        <p className="text-lg max-w-3xl mx-auto">
+          {statement}
+        </p>
+      )}
+    </section>
 
       <Clients/>
 

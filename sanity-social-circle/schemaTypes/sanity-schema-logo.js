@@ -31,6 +31,15 @@ export default {
         type: 'string',
         description: 'Optional custom height class (e.g., "h-40" or "h-23")',
         validation: Rule => Rule.optional()
+      },
+      {
+        name: 'facebookUrl',
+        title: 'Facebook URL',
+        type: 'url',
+        description: 'Link to the client’s Facebook page',
+        validation: Rule => Rule.uri({
+          scheme: ['http', 'https']
+        }).optional()
       }
     ],
     preview: {
