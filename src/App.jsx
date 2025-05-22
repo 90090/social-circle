@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { FaLinkedin,FaFacebook } from 'react-icons/fa';
-import { useWhatWeDo } from './hooks/useWhatWeDo';
 import Reviews from "./Reviews";
 import Navbar from "./Navbar";
 import Clients from "./Clients";
@@ -12,30 +11,51 @@ import OurWork from "./Ourwork";
 
 
 export default function App() {
-  const { statement } = useWhatWeDo();
-
 
   return (
     <div className="text-white bg-black">
       <Navbar/>
 
       {/* Hero Section */}
-      <section id="home" className="h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 to-purple-800 text-center">
-        <motion.h1 initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-5xl font-bold">
+      <section
+        id="home"
+        className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4"
+      >
+        {/* Background Gradient with Shadow */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-800 shadow-[0_0_60px_20px_rgba(128,90,213,0.5)] z-0"></div>
+
+        {/* Hero Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, ease: "easeInOut" }}
+          className="relative text-4xl md:text-6xl font-bold text-white z-10 drop-shadow-lg hover:scale-105 transition-transform duration-500"
+        >
           Elevating your Business Through Digital Marketing
         </motion.h1>
+
+        {/* Subheading (Optional) */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 1.2, ease: "easeInOut" }}
+          className="relative text-lg md:text-xl mt-4 text-white/90 z-10 max-w-2xl"
+        >
+          Transforming Clicks Into Connections<br className="hidden md:block" />And Connections Into Clients
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.a
+          href="mailto:socialcirclect@icloud.com"
+          className="relative inline-block mt-6 px-6 py-3 text-lg font-semibold text-white bg-purple-500 rounded-full shadow-lg hover:bg-purple-700 transition z-10"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Get Started
+        </motion.a>
       </section>
 
-      <section id="what-we-do" className="py-10 bg-gray-100 text-black text-center px-6">
-        <h2 className="text-4xl font-bold mb-6">
-          Transforming Clicks Into Connections - And Connections Into Clients
-        </h2>
-        {statement && (
-          <p className="text-lg max-w-3xl mx-auto">
-            {statement}
-          </p>
-        )}
-      </section>
       
       <OurWork/>
 

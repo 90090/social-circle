@@ -44,6 +44,11 @@ function Navbar() {
         <div className="hidden md:flex flex-1 justify-center">
           <ul className="flex space-x-8">
             <li>
+              <Link to="our-work" smooth duration={500} offset={-80} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 ${textcolorlink}`}>
+                Our Work
+              </Link>
+            </li>
+            <li>
               <Link to="services" smooth duration={500} offset={-60} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 ${textcolorlink}`}>
                 Services
               </Link>
@@ -108,22 +113,27 @@ function Navbar() {
         <div className="flex flex-col items-center justify-center h-[80%] space-y-6">
           <ul className="text-white space-y-6 text-center">
             <li>
-              <Link to="services" smooth duration={500}className="text-2xl font-bold cursor-pointer hover:text-gray-300" onClick={toggleMobileMenu}>
+              <Link to="our-work" smooth duration={500} offset={-80} className="text-2xl font-bold cursor-pointer hover:text-gray-300" onClick={toggleMobileMenu}>
+                Our Work
+              </Link>
+            </li>
+            <li>
+              <Link to="services" smooth duration={500} offset={-80} className="text-2xl font-bold cursor-pointer hover:text-gray-300" onClick={toggleMobileMenu}>
                 Services
               </Link>
             </li>
             <li>
-              <Link to="reviews" smooth duration={500} className="text-2xl font-bold cursor-pointer hover:text-gray-300"onClick={toggleMobileMenu}>
+              <Link to="reviews" smooth duration={500} offset={-80} className="text-2xl font-bold cursor-pointer hover:text-gray-300"onClick={toggleMobileMenu}>
                 Reviews
               </Link>
             </li>
             <li>
-              <Link to="about" smooth duration={500} className="text-2xl font-bold cursor-pointer hover:text-gray-300" onClick={toggleMobileMenu}>
+              <Link to="about" smooth duration={500} offset={-80} className="text-2xl font-bold cursor-pointer hover:text-gray-300" onClick={toggleMobileMenu}>
                 About
               </Link>
             </li>
             <li>
-              <Link to="contact" smooth duration={500} className="text-2xl font-bold cursor-pointer hover:text-gray-300" onClick={toggleMobileMenu} >
+              <Link to="contact" smooth duration={500} offset={-80} className="text-2xl font-bold cursor-pointer hover:text-gray-300" onClick={toggleMobileMenu} >
                 Contact
               </Link>
             </li>

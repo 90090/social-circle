@@ -3,11 +3,15 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
 const screenshots = [
-    { src: "./worksamples/nardellis.jpg", alt: "Instagram post #1", platform: "instagram" },
-    { src: "./worksamples/farmonwheels.jpg", alt: "Facebook ad #2", platform: "facebook" },
-    { src: "./worksamples/duckday.png", alt: "Instagram story #3", platform: "instagram" },
-    { src: "./worksamples/wellness.jpg", alt: "Instagram story #3", platform: "instagram" },
-    { src: "./worksamples/oil.jpg", alt: "Instagram story #3", platform: "instagram" },
+    { src: "./worksamples/bigdipper1.jpg", alt: "Instagram post #1", platform: "instagram" },
+    { src: "./worksamples/duck1.jpg", alt: "Facebook ad #2", platform: "facebook" },
+    { src: "./worksamples/farm1.jpg", alt: "Instagram story #3", platform: "instagram" },
+    { src: "./worksamples/duck2.jpg", alt: "Instagram story #3", platform: "instagram" },
+    { src: "./worksamples/jimmy1.jpg", alt: "Instagram story #3", platform: "instagram" },
+    { src: "./worksamples/nardelli1.jpg", alt: "Instagram story #3", platform: "instagram" },
+    { src: "./worksamples/weightloss1.jpg", alt: "Instagram story #3", platform: "instagram" },
+    { src: "./worksamples/wellness1.jpg", alt: "Instagram story #3", platform: "instagram" },
+    { src: "./worksamples/unlimited1.jpg", alt: "Instagram story #3", platform: "instagram" },
   ];
 
   export default function OurWork() {
