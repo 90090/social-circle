@@ -78,7 +78,7 @@ function Clients() {
   
     return (
     <section id="clients" className="py-20 bg-gray-100 text-black text-center">
-      <h2 className="text-4xl font-bold mb-4">Our Clients Experience...</h2>
+      <h2 className="text-4xl font-bold mb-4">Our Clients By the Numbers</h2>
 
       {/* Animated Metrics */}
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 pr-5 pl-5">

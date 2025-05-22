@@ -6,11 +6,15 @@ import Navbar from "./Navbar";
 import Clients from "./Clients";
 import Services from "./Services";
 import Mystory from "./Mystory";
+import OurWork from "./Ourwork";
+
+
 
 
 export default function App() {
-
   const { statement } = useWhatWeDo();
+
+
   return (
     <div className="text-white bg-black">
       <Navbar/>
@@ -22,16 +26,18 @@ export default function App() {
         </motion.h1>
       </section>
 
-      <section id="what-we-do" className="py-20 bg-white text-black text-center px-6">
-      <h2 className="text-4xl font-bold mb-6">
-        Transforming Clicks Into Connections - And Connections Into Clients
-      </h2>
-      {statement && (
-        <p className="text-lg max-w-3xl mx-auto">
-          {statement}
-        </p>
-      )}
-    </section>
+      <section id="what-we-do" className="py-10 bg-gray-100 text-black text-center px-6">
+        <h2 className="text-4xl font-bold mb-6">
+          Transforming Clicks Into Connections - And Connections Into Clients
+        </h2>
+        {statement && (
+          <p className="text-lg max-w-3xl mx-auto">
+            {statement}
+          </p>
+        )}
+      </section>
+      
+      <OurWork/>
 
       <Clients/>
 
@@ -57,20 +63,20 @@ export default function App() {
       <section id="contact" className="py-20 bg-purple-900 text-white text-center">
         <h2 className="text-4xl font-bold mb-6">Contact Us</h2>
         <p>Email us directly at <a href="mailto:socialcirclect@icloud.com" className="underline">socialcirclect@icloud.com</a></p>
-        <div className="max-w-xl mx-auto p-6 mb-8">
-          <div className="flex justify-center space-x-6">
-          <a href="https://www.facebook.com/thesocialcirclellc/" target="_blank" rel="noopener noreferrer">
-            <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center hover:bg-purple-400 transition-colors">
-              <FaFacebook className="text-2xl text-gray-700 hover:text-white" />
-            </div>
-          </a>
-          <a href="https://www.linkedin.com/in/courtneyligi/" target="_blank" rel="noopener noreferrer">
-            <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center hover:bg-purple-400 transition-colors">
-              <FaLinkedin className="text-2xl text-gray-700 hover:text-white" />
-            </div>
-          </a>
+          <div className="max-w-xl mx-auto p-6 mb-8">
+            <div className="flex justify-center space-x-6">
+            <a href="https://www.facebook.com/socialcirclellc" target="_blank" rel="noopener noreferrer">
+              <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center hover:bg-purple-400 transition-colors">
+                <FaFacebook className="text-2xl text-gray-700 hover:text-white" />
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/company/thesocialcirclect" target="_blank" rel="noopener noreferrer">
+              <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center hover:bg-purple-400 transition-colors">
+                <FaLinkedin className="text-2xl text-gray-700 hover:text-white" />
+              </div>
+            </a>
+          </div>
         </div>
-    </div>
       </section>
     </div>
   );
