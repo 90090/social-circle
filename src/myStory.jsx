@@ -45,7 +45,7 @@ function MyStory() {
       </div>
 
       {/* Our Team Section */}
-      <div className="mt-5">
+      <div>
         <h3 className="text-3xl font-bold mb-10">Our Team</h3>
         <div className="flex flex-wrap justify-center gap-12 px-6">
           {teamMembers.map((member, idx) => (
