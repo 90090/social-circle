@@ -6,17 +6,22 @@ const teamMembers = [
   {
     name: "Courney Ligi",
     title: "Founder & CEO",
-    photo: "./headshots/courtneyheadshot.jpg", // Make sure this path is correct
+    photo: "./headshots/IMG_8964.png",
   },
   {
-    name: "Jordan Smith",
-    title: "Marketing Strategist",
-    photo: "/team/jordan.jpg",
+    name: "Katie Yoxall",
+    title: "Content Director",
+    photo: "./headshots/IMG_9021.png",
   },
   {
-    name: "Taylor Lee",
-    title: "Brand Manager",
-    photo: "/team/taylor.jpg",
+    name: "Kalle Legassey",
+    title: "Content Manager",
+    photo: "./headshots/IMG_8997.png",
+  },
+  {
+    name: "Eryn Elinson",
+    title: "Graphic Designer",
+    photo: "./headshots/IMG_9036.png",
   },
 ];
 
@@ -47,7 +52,7 @@ function MyStory() {
       {/* Our Team Section */}
       <div>
         <h3 className="text-3xl font-bold mb-10">Our Team</h3>
-        <div className="flex flex-wrap justify-center gap-12 px-6">
+        <div className="flex flex-wrap justify-center gap-20 px-6">
           {teamMembers.map((member, idx) => (
             <motion.div
               key={idx}
@@ -57,7 +62,7 @@ function MyStory() {
               <img
                 src={member.photo}
                 alt={member.name}
-                className="w-48 h-48 object-cover rounded-full mx-auto shadow-md"
+                className="w-48 h-48 object-cover scale-125 rounded-full mx-auto shadow-md"
               />
               <h4 className="mt-4 text-xl font-semibold">{member.name}</h4>
               <p className="text-gray-600">{member.title}</p>

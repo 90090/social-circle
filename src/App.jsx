@@ -16,60 +16,61 @@ export default function App() {
     <div className="text-white bg-black">
       <Navbar/>
 
-      {/* Hero Section */}
-      <section
-        id="home"
-        className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4"
-      >
-        {/* Background Gradient with Shadow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-800 shadow-[0_0_60px_20px_rgba(128,90,213,0.5)] z-0"></div>
+      {/* Hero Video Section */}
+<section className="relative h-screen w-full overflow-hidden">
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover"
+  >
+    <source src="/Video/Video.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
-        {/* Hero Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, ease: "easeInOut" }}
-          className="relative text-4xl md:text-6xl font-bold text-white z-10 drop-shadow-lg hover:scale-105 transition-transform duration-500"
-        >
-          Elevating your Business Through Digital Marketing
-        </motion.h1>
+  {/* Optional dark overlay for aesthetics */}
+  <div className="absolute inset-0 bg-black/30" />
+</section>
 
-        {/* Subheading (Optional) */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 1.2, ease: "easeInOut" }}
-          className="relative text-lg md:text-xl mt-4 text-white/90 z-10 max-w-2xl"
-        >
-          Transforming Clicks Into Connections<br className="hidden md:block" />And Connections Into Clients
-        </motion.p>
+{/* Text Section Below */}
+<section className="relative flex flex-col items-center justify-center text-center px-4 py-16 bg-purple-300 text-black">
+  <motion.h1
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1.2, ease: "easeInOut" }}
+    className="text-4xl md:text-6xl font-bold drop-shadow-lg"
+  >
+    Elevating your Business Through Digital Marketing
+  </motion.h1>
 
-        {/* CTA Button */}
-        <motion.a
-          href="mailto:socialcirclect@icloud.com"
-          className="relative inline-block mt-6 px-6 py-3 text-lg font-semibold text-white bg-purple-500 rounded-full shadow-lg hover:bg-purple-700 transition z-10"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Get Started
-        </motion.a>
-      </section>
+  <motion.p
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.5, duration: 1 }}
+    className="text-lg md:text-xl mt-4 text-black/90 max-w-2xl"
+  >
+    Transforming Clicks Into Connections<br className="hidden md:block" />
+    And Connections Into Clients
+  </motion.p>
+
+  <motion.a
+    href="mailto:socialcirclect@icloud.com"
+    className="inline-block mt-6 px-6 py-3 text-lg font-semibold text-white bg-purple-500 rounded-full shadow-lg hover:bg-purple-700 transition"
+    initial={{ opacity: 0, x: 50 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+  >
+    Get Started
+  </motion.a>
+</section>
+
+
 
       
       <OurWork/>
 
       <Clients/>
-
-      {/* Video Highlights */}
-      <section id="videos" className="py-20 bg-white text-black text-center">
-        <h2 className="text-4xl font-bold mb-6">Featured Work</h2>
-        <div className="flex justify-center">
-          <video className="w-3/4 shadow-lg" controls>
-            <source src="/video.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </section>
 
       <Services/>
 
