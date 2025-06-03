@@ -17,13 +17,13 @@ export default function App() {
       <Navbar/>
 
       {/* Hero Video Section */}
-<section className="relative h-screen w-full overflow-hidden">
+<section className="relative h-screen w-full overflow-hidden p-0 m-0">
   <video
     autoPlay
     loop
     muted
     playsInline
-    className="absolute inset-0 w-full h-full object-cover"
+    className="absolute inset-0 w-full h-full object-cover object-center"
   >
     <source src="/Video/Video.mp4" type="video/mp4" />
     Your browser does not support the video tag.

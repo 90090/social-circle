@@ -4,7 +4,7 @@ import { useMyStory } from "./hooks/useMyStory";
 // Dummy team data (replace with your actual images and titles)
 const teamMembers = [
   {
-    name: "Courney Ligi",
+    name: "Courtney Ligi",
     title: "Founder & CEO",
     photo: "./headshots/IMG_8964.png",
   },
@@ -64,7 +64,7 @@ function MyStory() {
                 alt={member.name}
                 className="w-48 h-48 object-cover scale-125 rounded-full mx-auto shadow-md"
               />
-              <h4 className="mt-4 text-xl font-semibold">{member.name}</h4>
+              <h4 className="mt-10 text-xl font-semibold">{member.name}</h4>
               <p className="text-gray-600">{member.title}</p>
             </motion.div>
           ))}
