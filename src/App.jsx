@@ -83,7 +83,7 @@ export default function App() {
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-purple-900 text-white text-center">
         <h2 className="text-4xl font-bold mb-6">Contact Us</h2>
-        <p>Email us directly at <a href="mailto:socialcirclect@icloud.com" className="underline">socialcirclect@icloud.com</a></p>
+        <p>Email us directly at <a href="mailto:courtneyligi@socialcirclect.com" className="underline">courtneyligi@socialcirclect.com</a></p>
           <div className="max-w-xl mx-auto p-6 mb-8">
             <div className="flex justify-center space-x-6">
             <a href="https://www.facebook.com/socialcirclellc" target="_blank" rel="noopener noreferrer">
