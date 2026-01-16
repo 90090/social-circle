@@ -17,21 +17,18 @@ export default function App() {
       <Navbar/>
 
       {/* Hero Video Section */}
-<section className="relative h-screen w-full overflow-hidden p-0 m-0">
-  <video
-    autoPlay
-    loop
-    muted
-    playsInline
-    className="absolute inset-0 w-full h-full object-cover object-center"
-  >
-    <source src="/Video/Video.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+      <section className="w-full z-100">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-auto block z-0"
+        >
+          <source src="/Video/Video.mp4" type="video/mp4" />
+        </video>
+      </section>
 
-  {/* Optional dark overlay for aesthetics */}
-  <div className="absolute inset-0 bg-black/30" />
-</section>
 
 {/* Text Section Below */}
 <section className="relative flex flex-col items-center justify-center text-center px-4 py-16 bg-purple-300 text-black">

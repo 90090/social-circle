@@ -1,36 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-scroll";
 import { FaFacebookF, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [navbarBg, setNavbarBg] = useState("bg-transparent");
-  const [mobilenavBg, setmobilenavBg] = useState("white");
-  const [textcolorlink, setTextColor] = useState("text-white");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setNavbarBg("shadow-lg bg-white");
-        setTextColor("text-black");
-        setmobilenavBg("black");
-      } else {
-        setNavbarBg("bg-transparent");
-        setTextColor("text-white");
-        setmobilenavBg("white");
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <nav className={`fixed z-50 w-full top-0 transition-all duration-300 ${navbarBg} p-4`}>
+    <nav className={`relative sticky z-50 w-full top-0 transition-all duration-300 bg-white p-4`}>
       <div className="container mx-auto flex justify-between items-center">
         
         {/* Logo (Left) */}
@@ -44,27 +25,27 @@ function Navbar() {
         <div className="hidden md:flex flex-1 justify-center">
           <ul className="flex space-x-8">
             <li>
-              <Link to="our-work" smooth duration={500} offset={-80} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 ${textcolorlink}`}>
+              <Link to="our-work" smooth duration={500} offset={-80} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 text-black`}>
                 Our Work
               </Link>
             </li>
             <li>
-              <Link to="services" smooth duration={500} offset={-60} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 ${textcolorlink}`}>
+              <Link to="services" smooth duration={500} offset={-60} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 text-black`}>
                 Services
               </Link>
             </li>
             <li>
-              <Link to="reviews" smooth duration={500} offset={-60} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 ${textcolorlink}`}>
+              <Link to="reviews" smooth duration={500} offset={-60} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 text-black`}>
                 Reviews
               </Link>
             </li>
             <li>
-              <Link to="about" smooth duration={500} offset={-60} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 ${textcolorlink}`}>
+              <Link to="about" smooth duration={500} offset={-60} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 text-black`}>
                 About
               </Link>
             </li>
             <li>
-              <Link to="contact" smooth duration={500} offset={-60} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 ${textcolorlink}`}>
+              <Link to="contact" smooth duration={500} offset={-60} className={`text-lg font-bold cursor-pointer hover:text-purple-900 transition duration-300 text-black`}>
                 Contact
               </Link>
             </li>
@@ -93,7 +74,7 @@ function Navbar() {
         {/* Mobile Menu Button (Right) */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMobileMenu} className="text-white focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" className={`h-8 w-8`} fill="none" viewBox="0 0 24 24" stroke={`${mobilenavBg}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" className={`h-8 w-8`} fill="none" viewBox="0 0 24 24" stroke={`black`}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
