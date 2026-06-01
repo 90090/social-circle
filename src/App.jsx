@@ -31,7 +31,7 @@ export default function App() {
 
 
 {/* Text Section Below */}
-<section className="relative flex flex-col items-center justify-center text-center px-4 py-16 bg-purple-300 text-black">
+<section className="relative flex flex-col items-center justify-center text-center px-4 py-16 bg-purple-300 text-black">  
   <motion.h1
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
@@ -41,7 +41,7 @@ export default function App() {
     Elevating your Business Through Digital Marketing
   </motion.h1>
 
-  <motion.p
+  {/* <motion.p
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ delay: 0.5, duration: 1 }}
@@ -49,17 +49,37 @@ export default function App() {
   >
     Transforming Clicks Into Connections<br className="hidden md:block" />
     And Connections Into Clients
-  </motion.p>
+  </motion.p> */}
 
-  <motion.a
-    href="mailto:socialcirclect@icloud.com"
-    className="inline-block mt-6 px-6 py-3 text-lg font-semibold text-white bg-purple-500 rounded-full shadow-lg hover:bg-purple-700 transition"
-    initial={{ opacity: 0, x: 50 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.6, delay: 0.2 }}
+  <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.8, duration: 0.8 }}
+  className="mt-8"
   >
-    Get Started
-  </motion.a>
+    <p className="text-lg font-medium">
+      Ready to discuss your marketing goals?
+    </p>
+    <p className="text-black/70 mt-1">
+      Schedule a free 30-minute strategy call.
+    </p>
+  </motion.div>
+
+  {/* CTA Buttons */}
+  <div className="flex flex-col sm:flex-row gap-4 mt-6">
+
+    <motion.a
+      href="https://calendly.com/courtneyligi-socialcirclect"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block mt-6 px-6 py-3 text-lg font-semibold text-white bg-purple-500 rounded-full shadow-lg hover:bg-purple-700 transition"
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+    >
+      Book a Free Consultation
+    </motion.a>
+  </div>
 </section>
 
 
