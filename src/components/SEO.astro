@@ -1,0 +1,123 @@
+---
+interface Props {
+  title?: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  canonicalURL?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+}
+
+const siteName = "Social Circle";
+const defaultTitle = "Social Circle | Digital Marketing Agency in Connecticut";
+
+const {
+  title,
+  description,
+  image = "/og-image.png",
+  imageAlt = "Social Circle — Connecticut digital marketing agency",
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  type = "website",
+  noindex = false,
+} = Astro.props;
+
+// Home page uses the full default title; inner pages get "Page | Social Circle"
+const fullTitle = title ? `${title} | ${siteName}` : defaultTitle;
+const absoluteImage = Astro.site ? new URL(image, Astro.site).href : image;
+
+// ── Business details ─────────────────────────────────────
+// Fill these in. Anything left empty is left out of the schema
+// (Google ignores incomplete fields, but wrong ones can hurt).
+const business = {
+  telephone: "", // e.g. "+1-203-555-0123"
+  streetAddress: "", // leave blank if Courtney works from home / service-area only
+  addressLocality: "", // e.g. "Naugatuck"
+  postalCode: "",
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://socialcirclect.com/#business",
+  name: "Social Circle",
+  alternateName: "The Social Circle CT",
+  description:
+    "Connecticut digital marketing agency offering social media marketing, website development and marketing photography for small businesses.",
+  url: "https://socialcirclect.com",
+  logo: new URL("/logo.png", Astro.site).href,
+  image: absoluteImage,
+  email: "courtneyligi@socialcirclect.com",
+  ...(business.telephone && { telephone: business.telephone }),
+  priceRange: "$$",
+  founder: { "@type": "Person", name: "Courtney Ligi", jobTitle: "Founder & CEO" },
+  ...(business.addressLocality && {
+    address: {
+      "@type": "PostalAddress",
+      ...(business.streetAddress && { streetAddress: business.streetAddress }),
+      addressLocality: business.addressLocality,
+      addressRegion: "CT",
+      ...(business.postalCode && { postalCode: business.postalCode }),
+      addressCountry: "US",
+    },
+  }),
+  areaServed: { "@type": "State", name: "Connecticut" },
+  knowsAbout: [
+    "Social Media Marketing",
+    "Digital Marketing",
+    "Website Development",
+    "Marketing Photography",
+    "Content Creation",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Marketing Services",
+    itemListElement: ["Social Media Marketing", "Website Development", "Marketing Photos"].map(
+      (service) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: service } })
+    ),
+  },
+  sameAs: [
+    "https://www.facebook.com/socialcirclellc",
+    "https://www.linkedin.com/company/thesocialcirclect",
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://socialcirclect.com/#website",
+  name: siteName,
+  url: "https://socialcirclect.com",
+  publisher: { "@id": "https://socialcirclect.com/#business" },
+};
+---
+
+<!-- ── Primary ─────────────────────────────────────────── -->
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- ── Open Graph ─────────────────────────────────────── -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={absoluteImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="en_US" />
+
+<!-- ── Twitter / X Card ───────────────────────────────── -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteImage} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+<!-- ── Structured Data (JSON-LD) ──────────────────────── -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />

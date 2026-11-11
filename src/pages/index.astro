@@ -14,7 +14,7 @@ import { workSamples, reviews } from "../data/site";
 <Layout>
   <Navbar client:load />
 
-  <main>
+  <main class="overflow-x-clip">
     <Hero />
 
     <section id="our-work" class="py-10 bg-white text-black text-center px-6">
@@ -26,7 +26,7 @@ import { workSamples, reviews } from "../data/site";
 
     <Services />
 
-    <section id="reviews" class="py-20 bg-purple-100 text-black text-center">
+    <section id="reviews" class="py-20 bg-purple-100 text-black text-center overflow-hidden">
       <h2 class="text-4xl font-bold mb-6">What Our Clients Say</h2>
       <Reviews client:visible reviews={reviews} />
     </section>
