@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero.astro";
+import OurWork from "../components/OurWork";
+import Clients from "../components/Clients.astro";
+import Services from "../components/Services.astro";
+import Reviews from "../components/Reviews";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
+import { workSamples, reviews } from "../data/site";
+---
+
+<Layout>
+  <Navbar client:load />
+
+  <main>
+    <Hero />
+
+    <section id="our-work" class="py-10 bg-white text-black text-center px-6">
+      <h2 class="text-4xl font-bold mb-6">Our Work</h2>
+      <OurWork client:visible samples={workSamples} />
+    </section>
+
+    <Clients />
+
+    <Services />
+
+    <section id="reviews" class="py-20 bg-purple-100 text-black text-center">
+      <h2 class="text-4xl font-bold mb-6">What Our Clients Say</h2>
+      <Reviews client:visible reviews={reviews} />
+    </section>
+
+    <About />
+
+    <Contact />
+  </main>
+</Layout>

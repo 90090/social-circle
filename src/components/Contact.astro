@@ -1,0 +1,27 @@
+---
+import { FaFacebook, FaLinkedin } from "react-icons/fa";
+import { contact } from "../data/site";
+---
+
+<section id="contact" class="py-20 bg-purple-900 text-white text-center">
+  <h2 class="text-4xl font-bold mb-6">Contact Us</h2>
+  <p>
+    Email us directly at{" "}
+    <a href={`mailto:${contact.email}`} class="underline">{contact.email}</a>
+  </p>
+
+  <div class="max-w-xl mx-auto p-6 mb-8">
+    <div class="flex justify-center space-x-6">
+      <a href={contact.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="group">
+        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center group-hover:bg-purple-400 transition-colors">
+          <FaFacebook className="text-2xl text-gray-700 group-hover:text-white" />
+        </div>
+      </a>
+      <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="group">
+        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center group-hover:bg-purple-400 transition-colors">
+          <FaLinkedin className="text-2xl text-gray-700 group-hover:text-white" />
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

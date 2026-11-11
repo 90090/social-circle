@@ -1,0 +1,49 @@
+---
+import Metrics from "./Metrics";
+import { logos, metrics } from "../data/site";
+
+// Three copies so the -33.333% marquee loops seamlessly
+const marqueeLogos = [...logos, ...logos, ...logos];
+---
+
+<section id="clients" class="py-20 bg-gray-100 text-black text-center">
+  <h2 class="text-4xl font-bold mb-4">Our Clients By the Numbers</h2>
+
+  <Metrics client:visible metrics={metrics} />
+
+  <!-- Logo marquee (pure CSS, no JS) -->
+  <div class="overflow-hidden py-6 group mt-12">
+    <div class="flex animate-scroll whitespace-nowrap group-hover:[animation-play-state:paused] gap-12 px-4">
+      {
+        marqueeLogos.map((logo, i) => {
+          const isDuplicate = i >= logos.length;
+          const img = (
+            <img
+              src={logo.src}
+              alt={isDuplicate ? "" : logo.name}
+              loading="lazy"
+              class="h-16 w-auto max-w-none custom-grayscale object-contain"
+            />
+          );
+
+          return logo.facebookUrl ? (
+            <a
+              href={logo.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block shrink-0"
+              aria-hidden={isDuplicate ? "true" : undefined}
+              tabindex={isDuplicate ? -1 : undefined}
+            >
+              {img}
+            </a>
+          ) : (
+            <div class="inline-block shrink-0" aria-hidden={isDuplicate ? "true" : undefined}>
+              {img}
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

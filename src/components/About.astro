@@ -1,0 +1,39 @@
+---
+import { aboutCards, team } from "../data/site";
+---
+
+<section id="about" class="py-20 bg-white text-black text-center">
+  <h2 class="text-4xl font-bold mb-6">About Us</h2>
+
+  <!-- About cards -->
+  <div class="p-10 gap-4 flex justify-center flex-wrap">
+    {
+      aboutCards.map((card) => (
+        <div class={`max-w-xl text-center p-6 shadow-lg rounded-lg transition-transform duration-300 hover:scale-105 ${card.bgColor}`}>
+          {card.text}
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Team -->
+  <div>
+    <h3 class="text-3xl font-bold mb-10">Our Team</h3>
+    <div class="flex flex-wrap justify-center gap-20 px-6">
+      {
+        team.map((member) => (
+          <div class="max-w-xs text-center transition-transform duration-300 hover:scale-105">
+            <img
+              src={member.photo}
+              alt={member.name}
+              loading="lazy"
+              class="w-48 h-48 object-cover scale-125 rounded-full mx-auto shadow-md"
+            />
+            <h4 class="mt-10 text-xl font-semibold">{member.name}</h4>
+            <p class="text-gray-600">{member.title}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

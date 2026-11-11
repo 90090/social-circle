@@ -1,0 +1,38 @@
+---
+import Reveal from "./Reveal";
+import { contact } from "../data/site";
+---
+
+<!-- Hero video -->
+<section class="w-full">
+  <video autoplay loop muted playsinline class="w-full h-auto block">
+    <source src="/Video/Video.mp4" type="video/mp4" />
+  </video>
+</section>
+
+<!-- Hero text -->
+<section class="relative flex flex-col items-center justify-center text-center px-4 py-16 bg-purple-300 text-black">
+  <Reveal client:load onView={false} y={30} duration={1.2}>
+    <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg">
+      Elevating your Business Through Digital Marketing
+    </h1>
+  </Reveal>
+
+  <Reveal client:load onView={false} y={20} delay={0.8} duration={0.8} className="mt-8">
+    <p class="text-lg font-medium">Ready to discuss your marketing goals?</p>
+    <p class="text-black/70 mt-1">Schedule a free 30-minute strategy call.</p>
+  </Reveal>
+
+  <div class="flex flex-col sm:flex-row gap-4 mt-6">
+    <Reveal client:visible x={50} delay={0.4}>
+      <a
+        href={contact.calendly}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block mt-6 px-6 py-3 text-lg font-semibold text-white bg-purple-500 rounded-full shadow-lg hover:bg-purple-700 transition"
+      >
+        Book a Free Consultation
+      </a>
+    </Reveal>
+  </div>
+</section>
